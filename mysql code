@@ -1,0 +1,45 @@
+Create database PROJECT:
+USE PROJECT;
+CREATE TABLE inventory_item (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    product_name VARCHAR(255) NOT NULL,
+    model VARCHAR(50),
+    storage_capacity INT,
+    color VARCHAR(50),
+    quantity INT NOT NULL,
+    production_date DATE,
+    expiration_date DATE
+);
+
+CREATE TABLE warehouse (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    location VARCHAR(255)
+);
+
+CREATE TABLE supplier (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL,
+    contact_person VARCHAR(100)
+);
+
+CREATE TABLE warehouse_transaction (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    warehouse_id INT,
+    inventory_item_id INT,
+    quantity INT NOT NULL,
+    transaction_type ENUM('RECEIVE', 'DISPATCH') NOT NULL,
+    transaction_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (warehouse_id) REFERENCES warehouse(id),
+    FOREIGN KEY (inventory_item_id) REFERENCES inventory_item(id)
+);
+
+CREATE TABLE supplier_order (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    supplier_id INT,
+    inventory_item_id INT,
+    order_quantity INT NOT NULL,
+    order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    -- Other relevant fields...
+    FOREIGN KEY (supplier_id) REFERENCES supplier(id),
+    FOREIGN KEY (inventory_item_id) REFERENCES inventory_item(id)
+);
