@@ -60,10 +60,6 @@ public class inventory_itemController {
 	        return inventory_itemDAO.getExpiringItems(expirationDate);
 	    }
 
-	    @GetMapping("/items/quantity/less-than/{maxQuantity}")
-	    public List<inventory_item> getItemsWithQuantityLessThan(@PathVariable int maxQuantity) {
-	        return inventory_itemDAO.getItemsWithQuantityLessThan(maxQuantity);
-	    }
 	    @GetMapping("/items/quantity/greater-than/{minQuantity}")
 	    public List<inventory_item> getItemsWithQuantityGreaterThan(@PathVariable int minQuantity) {
 	        return inventory_itemDAO.getItemsWithQuantityGreaterThan(minQuantity);
