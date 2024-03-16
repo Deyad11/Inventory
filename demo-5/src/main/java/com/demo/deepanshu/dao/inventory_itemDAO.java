@@ -11,7 +11,6 @@ public interface inventory_itemDAO {
     List<inventory_item> getExpiringItems(LocalDate expirationDate);
     List<inventory_item> getItemsInRange(int startId, int endId);
     List<inventory_item> getItemsByProductName(String productName);
-    List<inventory_item> getItemsWithQuantityLessThan(int maxQuantity);
     List<inventory_item> getItemsWithQuantityGreaterThan(int minQuantity);
     void updateQuantity(int inventoryItemId, int quantityChange);		// TODO Auto-generated method stub
 		
