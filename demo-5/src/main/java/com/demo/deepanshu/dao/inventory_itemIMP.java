@@ -63,11 +63,6 @@ public class inventory_itemIMP implements inventory_itemDAO {
 	        String sql = "SELECT * FROM inventory_item WHERE product_name = ?";
 	        return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(inventory_item.class), productName);
 	    }
-	    @Override
-	    public List<inventory_item> getItemsWithQuantityLessThan(int maxQuantity) {
-	        String sql = "SELECT * FROM inventory_item WHERE quantity < ?";
-	        return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(inventory_item.class), maxQuantity);
-	    }
 
 	    @Override
 	    public List<inventory_item> getItemsWithQuantityGreaterThan(int minQuantity) {
